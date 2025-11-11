@@ -1,0 +1,140 @@
+/* Achievements page */
+.achievements-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.achievements-count {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.count-badge {
+    background: #10b981;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+/* Completed goals */
+.completed-goal {
+    background: white;
+    border: 1px solid #d1fae5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.completed-goal:hover {
+    border-color: #10b981;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+    transform: translateY(-2px);
+}
+
+.completed-goal:before {
+    content: "✓";
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #10b981;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.completed-title {
+    font-size: 1.3rem;
+    color: #065f46;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.completed-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.completed-title a:hover {
+    color: #047857;
+}
+
+.completed-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.completion-date {
+    color: #059669;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+}
+
+/* Empty state */
+.empty-achievements {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #64748b;
+}
+
+.empty-achievements h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+.return-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.return-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .completed-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .completed-goal:before {
+        left: -8px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+
+    .empty-achievements {
+        padding: 2rem 1rem;
+    }
+}

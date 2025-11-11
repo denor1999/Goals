@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Все цели - Мои цели{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Все цели</h1>
+    <p class="page-subtitle">Ваши текущие и завершенные цели</p>
+
+    {% if goals %}
+        {% for goal in goals %}
+            <div class="goal-item">
+                <h2 class="goal-title">
+                    <a href="{% url 'goal_detail' goal.id %}">{{ goal.title }}</a>
+                </h2>
+                <p class="goal-description">{{ goal.description }}</p>
+
+                <div class="goal-meta">
+                    <span class="deadline">📅 {{ goal.deadline }}</span>
+                    <span class="status status-{{ goal.status }}">
+                        {% if goal.status == 'in_progress' %}В процессе{% else %}✅ Выполнено{% endif %}
+                    </span>
+                </div>
+
+                <div class="quick-actions">
+                    <form method="post" action="{% url 'toggle_goal_status' goal.id %}" style="display: inline;">
+                        {% csrf_token %}
+                        {% if goal.status == 'in_progress' %}
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                ✅ Отметить выполненной
+                            </button>
+                        {% else %}
+                            <button type="submit" class="btn btn-outline btn-sm">
+                                🔄 Вернуть в работу
+                            </button>
+                        {% endif %}
+                    </form>
+                    <a href="{% url 'goal_detail' goal.id %}" class="btn btn-secondary btn-sm">
+                        📖 Подробнее
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <h3>Цели еще не добавлены</h3>
+            <p>Начните добавлять свои цели для отслеживания прогресса!</p>
+        </div>
+    {% endif %}
+{% endblock %}

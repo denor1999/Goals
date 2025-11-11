@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мои цели{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'buttons.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Мои цели</h1>
+            <p class="subtitle">Отслеживайте прогресс в достижении ваших целей</p>
+        </header>
+
+        <nav class="nav">
+            <a href="{% url 'index' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                Все цели
+            </a>
+            <a href="{% url 'achievements' %}" class="nav-link {% if request.path == '/achievements/' %}active{% endif %}">
+                Достижения
+            </a>
+        </nav>
+
+        <main class="content">
+            {% if message %}
+                <div class="message message-success">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+</body>
+</html>
