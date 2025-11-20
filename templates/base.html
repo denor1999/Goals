@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'buttons.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -24,6 +25,20 @@
                 Достижения
             </a>
         </nav>
+
+        <div class="header-auth">
+            {% if user.is_authenticated %}
+                <div class="user-menu">
+                    <span class="user-greeting">Привет, {{ user.username }}!</span>
+                    <a href="{% url 'logout' %}" class="auth-link logout-link">Выйти</a>
+                </div>
+            {% else %}
+                <div class="auth-links">
+                    <button class="auth-link login-link" onclick="openAuthModal()">Войти</button>
+                    <button class="auth-link register-link" onclick="openAuthModal()">Регистрация</button>
+                </div>
+            {% endif %}
+        </div>
 
         <main class="content">
             {% if message %}

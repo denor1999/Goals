@@ -1,108 +1,197 @@
-/* Base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* base.css */
 
-body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8fafc;
-}
-
+/* Общие стили */
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Header */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Шапка */
 .header {
-    background: white;
-    padding: 2rem 0;
     text-align: center;
-    border-bottom: 1px solid #e2e8f0;
     margin-bottom: 2rem;
+    padding: 2rem 0;
+    background: white;
+    border-radius: 10px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .header h1 {
     font-size: 2.5rem;
     color: #1e293b;
     margin-bottom: 0.5rem;
-    font-weight: 700;
 }
 
 .subtitle {
-    font-size: 1.1rem;
     color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
 }
 
-/* Navigation */
+/* Навигация */
 .nav {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: white;
-    color: #475569;
+    color: #64748b;
     text-decoration: none;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
     transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-    border-color: #3b82f6;
     color: #3b82f6;
-    transform: translateY(-1px);
+    background-color: #f8fafc;
 }
 
 .nav-link.active {
-    background: #3b82f6;
-    color: white;
-    border-color: #3b82f6;
+    color: #3b82f6;
+    background-color: #eff6ff;
 }
 
-/* Content */
-.content {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* Блок авторизации */
+.header-auth {
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: 2rem;
 }
 
-/* Back link */
-.back-link {
-    display: inline-flex;
+.user-menu {
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
+    background: white;
     padding: 0.75rem 1.5rem;
-    background: #64748b;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.user-greeting {
+    color: #374151;
     font-weight: 500;
-    transition: background-color 0.2s ease;
 }
 
-.back-link:hover {
-    background: #475569;
+.auth-links {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.auth-link {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.login-link {
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.login-link:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.register-link {
+    background-color: #3b82f6;
     color: white;
 }
 
-/* Responsive */
+.register-link:hover {
+    background-color: #2563eb;
+}
+
+.logout-link {
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.logout-link:hover {
+    background-color: #fef2f2;
+}
+
+/* Основное содержимое */
+.content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+/* Сообщения */
+.messages {
+    margin-bottom: 1.5rem;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.alert-warning {
+    background-color: #fffbeb;
+    color: #d97706;
+    border: 1px solid #fed7aa;
+}
+
+.alert-info {
+    background-color: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+.message {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.message-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+/* Мобильная версия */
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -110,6 +199,7 @@ body {
 
     .header {
         padding: 1.5rem 0;
+        margin-top: 0.5rem;
     }
 
     .header h1 {
@@ -118,12 +208,22 @@ body {
 
     .nav {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
     }
 
-    .nav-link {
-        width: 200px;
+    .header-auth {
         justify-content: center;
+    }
+
+    .user-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .auth-links {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .content {
