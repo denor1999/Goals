@@ -1,4 +1,4 @@
-# .gitignore для Django проекта с PostgreSQL
+.idea
 
 # Django
 *.pyc
