@@ -65,7 +65,6 @@ def index(request):
 
 @login_required
 def goal_detail(request, goal_id):
-    # Берем цель из БД с проверкой прав доступа
     goal = get_object_or_404(Goal, id=goal_id, user=request.user)
     message = request.GET.get('message', '')
     return render(request, 'goal_detail.html', {'goal': goal, 'message': message})
@@ -74,7 +73,8 @@ def goal_detail(request, goal_id):
 @login_required
 def achievements(request):
     achievements_list = Achievement.objects.filter(user=request.user)
-    completed_goals = Goal.objects.filter(user=request.user, is_completed=True)
+    completed_goals = Goal.objects.filter(user=request.user, is_completed=True)  # ← ТОЛЬКО выполненные!
+
     return render(request, 'achievements.html', {
         'achievements': achievements_list,
         'completed_goals': completed_goals
@@ -83,7 +83,6 @@ def achievements(request):
 
 @login_required
 def add_goal(request):
-    """Добавление новой цели в БД"""
     if request.method == 'POST':
         form = GoalForm(request.POST)
         if form.is_valid():
@@ -100,7 +99,6 @@ def add_goal(request):
 
 @login_required
 def add_step(request, goal_id):
-    """Добавление шага к цели"""
     goal = get_object_or_404(Goal, id=goal_id, user=request.user)
 
     if request.method == 'POST':
@@ -145,7 +143,8 @@ def reopen_goal(request, goal_id):
         goal.is_completed = False
         goal.save()
         messages.success(request, f'Цель "{goal.title}" возвращена в работу!')
-        return redirect('goal_detail', goal_id=goal_id)
+        return redirect('achievements')
+
     return redirect('index')
 
 

@@ -8,30 +8,6 @@
         <a href="{% url 'index' %}" class="btn btn-secondary">← Назад к целям</a>
     </div>
 
-    <!-- Достижения (объекты Achievement) -->
-    <h2>🎖️ Достижения ({{ achievements.count }})</h2>
-
-    {% if achievements %}
-        <div class="achievements-list">
-            {% for achievement in achievements %}
-                <div class="achievement-item">
-                    <h3>🏅 {{ achievement.title }}</h3>
-                    <p class="achievement-description">{{ achievement.description }}</p>
-                    <div class="achievement-meta">
-                        <span class="achievement-date">📅 {{ achievement.achieved_at|date:"d.m.Y" }}</span>
-                        {% if achievement.points %}
-                            <span class="achievement-points">⭐ {{ achievement.points }} баллов</span>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="empty-state">
-            <p>Пока нет достижений. Завершайте цели чтобы получать достижения!</p>
-        </div>
-    {% endif %}
-
     <!-- Выполненные цели -->
     <h2>✅ Выполненные цели ({{ completed_goals.count }})</h2>
 
