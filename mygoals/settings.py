@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'mygoals.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgresql',
+        'NAME': 'goals',
         'USER': 'denor1999',
         'PASSWORD': 'IvanLyzhnik2006',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432',
 
     }

@@ -1,45 +1,68 @@
 {% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Достижения - Мои цели{% endblock %}
-
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'achievements.css' %}">
-{% endblock %}
 
 {% block content %}
-    <div class="achievements-header">
-        <h1 class="page-title">Достижения</h1>
+<div class="achievements-container">
+    <h1>🏆 Мои достижения</h1>
+
+    <div class="navigation">
+        <a href="{% url 'index' %}" class="btn btn-secondary">← Назад к целям</a>
     </div>
 
-    {% if goals %}
-        <p class="achievements-count">
-            Выполнено целей: <strong>{{ goals|length }}</strong>
-            <span class="count-badge">{{ goals|length }}</span>
-        </p>
+    <!-- Достижения (объекты Achievement) -->
+    <h2>🎖️ Достижения ({{ achievements.count }})</h2>
 
-        {% for goal in goals %}
-            <div class="completed-goal">
-                <h2 class="completed-title">
-                    <a href="{% url 'goal_detail' goal.id %}">{{ goal.title }}</a>
-                </h2>
-                <p class="goal-description">{{ goal.description }}</p>
-                <div class="completed-meta">
-                    <span class="completion-date">Завершено: {{ goal.deadline }}</span>
-                    <form method="post" action="{% url 'reopen_goal' goal.id %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-outline btn-sm">
-                            🔄 Вернуть в работу
-                        </button>
-                    </form>
+    {% if achievements %}
+        <div class="achievements-list">
+            {% for achievement in achievements %}
+                <div class="achievement-item">
+                    <h3>🏅 {{ achievement.title }}</h3>
+                    <p class="achievement-description">{{ achievement.description }}</p>
+                    <div class="achievement-meta">
+                        <span class="achievement-date">📅 {{ achievement.achieved_at|date:"d.m.Y" }}</span>
+                        {% if achievement.points %}
+                            <span class="achievement-points">⭐ {{ achievement.points }} баллов</span>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     {% else %}
-        <div class="empty-achievements">
-            <h3>Пока нет достижений</h3>
-            <p>Продолжайте работать над своими целями!</p>
-            <a href="{% url 'index' %}" class="return-link">Вернуться к списку целей →</a>
+        <div class="empty-state">
+            <p>Пока нет достижений. Завершайте цели чтобы получать достижения!</p>
         </div>
     {% endif %}
+
+    <!-- Выполненные цели -->
+    <h2>✅ Выполненные цели ({{ completed_goals.count }})</h2>
+
+    {% if completed_goals %}
+        <div class="completed-goals-list">
+            {% for goal in completed_goals %}
+                <div class="completed-goal-item">
+                    <h3>🎯 {{ goal.title }}</h3>
+                    <p class="goal-description">{{ goal.description }}</p>
+                    <div class="goal-meta">
+                        <span class="goal-date">📅 Завершено: {{ goal.updated_at|date:"d.m.Y" }}</span>
+                        <span class="goal-steps">📝 Шагов выполнено: {{ goal.steps.count }}</span>
+                    </div>
+
+                    <!-- Прогресс по шагам -->
+                    <div class="steps-progress">
+                        {% with completed_steps=goal.steps.filter.is_completed.count %}
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {% widthratio completed_steps goal.steps.count 100 %}%"></div>
+                        </div>
+                        <span class="progress-text">{{ completed_steps }}/{{ goal.steps.count }} шагов выполнено</span>
+                        {% endwith %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>Пока нет выполненных целей.</p>
+        </div>
+    {% endif %}
+</div>
+
 {% endblock %}

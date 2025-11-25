@@ -1,105 +1,84 @@
-/* Goal detail page */
-.goal-header {
-    margin-bottom: 2rem;
+.goal-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.goal-title {
-    font-size: 2rem;
-    color: #1e293b;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-/* Meta info */
-.meta-container {
-    background: #f8fafc;
-    padding: 1.5rem;
+.goal-info {
+    background: white;
+    padding: 20px;
     border-radius: 8px;
-    margin: 1.5rem 0;
-    border-left: 4px solid #3b82f6;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-.meta-item {
+.goal-meta {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
+    gap: 20px;
+    margin-top: 15px;
 }
 
-.meta-item:last-child {
-    margin-bottom: 0;
+.status.completed {
+    color: #28a745;
 }
 
-.meta-label {
-    font-weight: 600;
-    color: #475569;
-    min-width: 80px;
+.status.in-progress {
+    color: #ffc107;
 }
 
-/* Sections */
-.section {
-    margin: 2rem 0;
-}
-
-.section-title {
-    font-size: 1.3rem;
-    color: #1e293b;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e2e8f0;
-    font-weight: 600;
-}
-
-.description-text {
-    color: #475569;
-    line-height: 1.7;
-    font-size: 1.05rem;
-}
-
-/* Steps */
 .steps-list {
-    list-style: none;
-    padding: 0;
+    margin: 20px 0;
 }
 
 .step-item {
-    padding: 1rem 1rem 1rem 2.5rem;
-    margin-bottom: 0.5rem;
-    background: #f8fafc;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
     border-radius: 6px;
-    position: relative;
-    border-left: 3px solid #3b82f6;
 }
 
-.step-item:before {
-    content: "→";
-    position: absolute;
-    left: 1rem;
-    color: #3b82f6;
-    font-weight: bold;
+.step-item.completed {
+    background: #f8fff8;
+    border-color: #28a745;
 }
 
-.step-item:last-child {
-    margin-bottom: 0;
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .goal-title {
-        font-size: 1.6rem;
-    }
+.step-description {
+    color: #666;
+    margin-bottom: 10px;
+}
 
-    .meta-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin: 2px;
+}
 
-    .meta-label {
-        min-width: auto;
-    }
+.btn-success { background: #28a745; color: white; }
+.btn-warning { background: #ffc107; color: black; }
+.btn-primary { background: #007bff; color: white; }
+.btn-secondary { background: #6c757d; color: white; }
+.btn-outline { background: transparent; border: 1px solid #007bff; color: #007bff; }
+.btn-sm { padding: 5px 10px; font-size: 14px; }
 
-    .step-item {
-        padding: 0.75rem 0.75rem 0.75rem 2rem;
-    }
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.add-step-section {
+    margin-top: 30px;
+    text-align: center;
 }

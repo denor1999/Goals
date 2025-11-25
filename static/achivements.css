@@ -1,140 +1,100 @@
-/* Achievements page */
-.achievements-header {
-    margin-bottom: 1.5rem;
+.achievements-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.page-title {
-    font-size: 1.8rem;
-    color: #1e293b;
-    margin-bottom: 0.5rem;
+.navigation {
+    margin-bottom: 30px;
 }
 
-.achievements-count {
-    color: #64748b;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+.achievements-list,
+.completed-goals-list {
+    margin: 20px 0;
 }
 
-.count-badge {
-    background: #10b981;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-left: 0.5rem;
-}
-
-/* Completed goals */
-.completed-goal {
+.achievement-item,
+.completed-goal-item {
     background: white;
-    border: 1px solid #d1fae5;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    position: relative;
+    border: 2px solid gold;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.completed-goal:hover {
-    border-color: #10b981;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
-    transform: translateY(-2px);
+.completed-goal-item {
+    border-color: #28a745;
+    background: #f8fff8;
 }
 
-.completed-goal:before {
-    content: "✓";
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #10b981;
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+.achievement-description,
+.goal-description {
+    color: #666;
+    margin: 10px 0;
+}
+
+.achievement-meta,
+.goal-meta {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.achievement-date,
+.achievement-points,
+.goal-date,
+.goal-steps {
+    color: #888;
+}
+
+.achievement-points {
+    color: #ff9900;
     font-weight: bold;
 }
 
-.completed-title {
-    font-size: 1.3rem;
-    color: #065f46;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
+.steps-progress {
+    margin-top: 15px;
 }
 
-.completed-title a {
-    color: inherit;
-    text-decoration: none;
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
-.completed-title a:hover {
-    color: #3b82f6;
+.progress-fill {
+    height: 100%;
+    background: #28a745;
+    transition: width 0.3s ease;
 }
 
-.completed-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
+.progress-text {
+    font-size: 12px;
+    color: #666;
 }
 
-.completion-date {
-    color: #059669;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-weight: 500;
-}
-
-/* Empty state */
-.empty-achievements {
+.empty-state {
     text-align: center;
-    padding: 3rem 1rem;
-    color: #64748b;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #666;
 }
 
-.empty-achievements h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #475569;
-}
-
-.return-link {
-    color: #3b82f6;
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
     text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    display: inline-block;
 }
 
-.return-link:hover {
-    text-decoration: underline;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .completed-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .completed-goal:before {
-        left: -8px;
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
-    }
-
-    .empty-achievements {
-        padding: 2rem 1rem;
-    }
+.btn-secondary {
+    background: #6c757d;
+    color: white;
 }
